@@ -1,11 +1,17 @@
+import ActivedNotes from "./components/ActivedNotes";
+import { getInitialData, showFormattedDate } from "./utils/index";
+
 import "./App.css";
 
 function App() {
+  const initialData = getInitialData();
+
   return (
     <>
-      <div>
-        <h1>Hello World</h1>
-      </div>
+      <ActivedNotes
+        initialData={initialData}
+        formaterDate={showFormattedDate}
+      />
     </>
   );
 }
