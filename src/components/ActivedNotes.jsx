@@ -1,21 +1,21 @@
 import React from "react";
 import ActivedNoteCard from "./ActivedNoteCard";
+import LayoutsContent from "../layouts/LayoutsContent";
 
-const ActivedNotes = ({ initialData, formaterDate }) => {
+const ActivedNotes = ({ initialData, formaterDate, onDelete }) => {
   return (
-    <div>
-      <h1 className="text-2xl">Catatan Aktif</h1>
-      <div className="bg-slate-800 grid grid-cols-4 gap-2 mt-4">
-        {initialData.map((data) => (
-          <ActivedNoteCard
-            key={data.id}
-            title={data.title}
-            createdAt={formaterDate(data.createdAt)}
-            body={data.body}
-          />
-        ))}
-      </div>
-    </div>
+    <LayoutsContent titleContent={"Catatan Aktif"}>
+      {initialData.map((data) => (
+        <ActivedNoteCard
+          key={data.id}
+          title={data.title}
+          createdAt={formaterDate(data.createdAt)}
+          body={data.body}
+          id={data.id}
+          onDelete={onDelete}
+        />
+      ))}
+    </LayoutsContent>
   );
 };
 
