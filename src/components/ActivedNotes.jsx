@@ -2,13 +2,21 @@ import React from "react";
 import ActivedNoteCard from "./ActivedNoteCard";
 import LayoutsContent from "../layouts/LayoutsContent";
 
-const ActivedNotes = ({ initialData, formaterDate, onDelete, addNote }) => {
+const ActivedNotes = ({
+  initialData,
+  formaterDate,
+  onDelete,
+  addNote,
+  onSearchNote,
+}) => {
   return (
     <LayoutsContent
       titleContent={"Catatan Aktif"}
       featureAdd={true}
+      featureSeacrh={true}
       addNote={addNote}
       initialData={initialData}
+      onSearchNote={onSearchNote}
     >
       {initialData.length > 0 ? (
         initialData.map((data) => (
