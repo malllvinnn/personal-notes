@@ -1,6 +1,6 @@
 import React from "react";
 
-const ActivedNoteCard = ({ id, title, createdAt, body, onDelete }) => {
+const NoteCard = ({ id, title, createdAt, body, onDelete }) => {
   return (
     <div className="px-2 pt-2 pb-4 border-2 border-accent/70 rounded-lg flex flex-col gap-3 justify-between">
       <div>
@@ -23,4 +23,4 @@ const ActivedNoteCard = ({ id, title, createdAt, body, onDelete }) => {
   );
 };
 
-export default ActivedNoteCard;
+export default NoteCard;

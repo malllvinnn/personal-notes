@@ -4,7 +4,7 @@ const getInitialData = () => ([
     title: "Babel",
     body: "Babel merupakan tools open-source yang digunakan untuk mengubah sintaks ECMAScript 2015+ menjadi sintaks yang didukung oleh JavaScript engine versi lama. Babel sering dipakai ketika kita menggunakan sintaks terbaru termasuk sintaks JSX.",
     createdAt: '2022-04-14T04:27:34.572Z',
-    archived: false,
+    archived: true,
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const getInitialData = () => ([
     title: "Lifecycle",
     body: "Dalam konteks React component, lifecycle merupakan kumpulan method yang menjadi siklus hidup mulai dari component dibuat (constructor), dicetak (render), pasca-cetak (componentDidMount), dan sebagainya. ",
     createdAt: '2022-04-14T04:27:34.572Z',
-    archived: false,
+    archived: true,
   },
   {
     id: 5,

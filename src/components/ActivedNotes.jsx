@@ -1,5 +1,5 @@
 import React from "react";
-import ActivedNoteCard from "./ActivedNoteCard";
+import NoteCard from "./NoteCard";
 import LayoutsContent from "../layouts/LayoutsContent";
 
 const ActivedNotes = ({
@@ -20,7 +20,7 @@ const ActivedNotes = ({
     >
       {initialData.length > 0 ? (
         initialData.map((data) => (
-          <ActivedNoteCard
+          <NoteCard
             key={data.id}
             title={data.title}
             createdAt={formaterDate(data.createdAt)}
