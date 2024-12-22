@@ -62,7 +62,11 @@ function App() {
         addNote={onAddNoteHandler}
         onSearchNote={onSearchNoteHandler}
       />
-      <ArchivedNotes initialData={archivedInitData} />
+      <ArchivedNotes
+        initialData={archivedInitData}
+        formaterDate={showFormattedDate}
+        onDelete={onDeleteHandler}
+      />
     </div>
   );
 }

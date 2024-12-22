@@ -1,14 +1,20 @@
 import React from "react";
 import LayoutsContent from "../layouts/LayoutsContent";
+import NoteCard from "./NoteCard";
 
-const ArchivedNotes = ({ initialData }) => {
+const ArchivedNotes = ({ initialData, formaterDate, onDelete }) => {
   console.log(initialData);
   return (
-    <LayoutsContent titleContent={"Arsip"}>
+    <LayoutsContent titleContent={"Arsip"} initialData={initialData}>
       {initialData.map((data) => (
-        <div key={data.id}>
-          <h1>{data.title}</h1>
-        </div>
+        <NoteCard
+          key={data.id}
+          title={data.title}
+          createdAt={formaterDate(data.createdAt)}
+          body={data.body}
+          id={data.id}
+          onDelete={onDelete}
+        />
       ))}
     </LayoutsContent>
   );
