@@ -14,7 +14,7 @@ const LayoutsContent = ({
   return (
     <div className="bg-slate-800">
       <div className="flex justify-between">
-        <h1 className="text-2xl">{titleContent}</h1>
+        <h1 className="text-2xl font-bold">{titleContent}</h1>
         <div className="flex items-center gap-4">
           {featureSeacrh && <SearchNotes onSearchNote={onSearchNote} />}
           {featureAdd && <AddNotes addNote={addNote} />}

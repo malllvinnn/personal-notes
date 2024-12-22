@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { getInitialData, showFormattedDate } from "./utils/index";
 
 import "./App.css";
-import { data } from "autoprefixer";
 
 function App() {
   const [initialData, setInitialData] = useState(getInitialData());
@@ -50,6 +49,14 @@ function App() {
     setFilteredData(isData);
   };
 
+  const onUnArchivedNoteHandler = (id) => {
+    const isData = initialData.map((data) =>
+      data.id === id ? { ...data, archived: false } : data
+    );
+    setInitialData(isData);
+    setFilteredData(isData);
+  };
+
   return (
     <div className="flex flex-col gap-6">
       <ActivedNotes
@@ -67,6 +74,7 @@ function App() {
         initialData={initialData.filter((data) => data.archived)}
         formaterDate={showFormattedDate}
         onDelete={onDeleteHandler}
+        onUnArchived={onUnArchivedNoteHandler}
       />
     </div>
   );

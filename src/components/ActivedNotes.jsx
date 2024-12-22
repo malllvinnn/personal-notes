@@ -32,7 +32,9 @@ const ActivedNotes = ({
           />
         ))
       ) : (
-        <span className="w-full justify-center flex">Tidak ada catatan</span>
+        <span className="w-full justify-center flex opacity-50">
+          Tidak ada catatan
+        </span>
       )}
     </LayoutsContent>
   );
