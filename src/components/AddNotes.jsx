@@ -47,6 +47,7 @@ const styleFormTextArea = {
 const AddNotes = ({ addNote }) => {
   const [isTitle, setIsTitle] = React.useState("");
   const [isBody, setIsBody] = React.useState("");
+  const maxTitleLength = 50;
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -54,6 +55,7 @@ const AddNotes = ({ addNote }) => {
 
   const onSubmitAddHandler = (e) => {
     e.preventDefault();
+
     const data = {
       title: isTitle,
       body: isBody,
@@ -64,6 +66,8 @@ const AddNotes = ({ addNote }) => {
     setIsTitle("");
     handleClose();
   };
+
+  const remainingTitleChar = maxTitleLength - isTitle.length;
 
   return (
     <div>
@@ -78,9 +82,20 @@ const AddNotes = ({ addNote }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={styleModal}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Buat Catatan
-          </Typography>
+          <Box
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Buat Catatan
+            </Typography>
+            <Typography component="span" style={{ opacity: "40%" }}>
+              Sisa Karakter: {remainingTitleChar}
+            </Typography>
+          </Box>
           <Box
             component="form"
             sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}
@@ -93,7 +108,13 @@ const AddNotes = ({ addNote }) => {
               fullWidth
               sx={styleForm}
               value={isTitle}
-              onChange={(e) => setIsTitle(e.target.value)}
+              onChange={(e) => {
+                // setIsTitle(e.target.value);
+                const inputValue = e.target.value;
+                if (inputValue.length <= maxTitleLength) {
+                  setIsTitle(inputValue);
+                }
+              }}
             />
             <TextField
               id="outlined-textarea"
