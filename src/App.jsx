@@ -8,11 +8,23 @@ import "./App.css";
 
 function App() {
   const [initialData, setInitialData] = useState(getInitialData());
-  // const initialData = getInitialData();
 
   const onDeleteHandler = (id) => {
     const data = initialData.filter((data) => data.id !== id);
     setInitialData(data);
+  };
+
+  const onAddNoteHandler = (newData) => {
+    setInitialData([
+      ...initialData,
+      {
+        id: +new Date(),
+        title: newData.title,
+        body: newData.body,
+        createdAt: new Date().toISOString(),
+        archived: false,
+      },
+    ]);
   };
 
   return (
@@ -21,8 +33,8 @@ function App() {
         initialData={initialData}
         formaterDate={showFormattedDate}
         onDelete={onDeleteHandler}
+        addNote={onAddNoteHandler}
       />
-
       <ArchivedNotes />
     </div>
   );
