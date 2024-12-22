@@ -8,6 +8,7 @@ const ActivedNotes = ({
   onDelete,
   addNote,
   onSearchNote,
+  onArchived,
 }) => {
   return (
     <LayoutsContent
@@ -27,6 +28,7 @@ const ActivedNotes = ({
             body={data.body}
             id={data.id}
             onDelete={onDelete}
+            onArchived={onArchived}
           />
         ))
       ) : (

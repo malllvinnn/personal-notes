@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getInitialData, showFormattedDate } from "./utils/index";
 
 import "./App.css";
+import { data } from "autoprefixer";
 
 function App() {
   const [initialData, setInitialData] = useState(getInitialData());
@@ -41,29 +42,29 @@ function App() {
     }
   };
 
-  const isActivedInitData = initialData.filter(
-    (data) => data.archived === false
-  );
-
-  const isActivedFilteredData = filteredData.filter(
-    (data) => data.archived === false
-  );
-
-  const activedData = isActivedInitData && isActivedFilteredData;
-
-  const archivedInitData = initialData.filter((data) => data.archived === true);
+  const onArchivedNoteHandler = (id) => {
+    const isData = initialData.map((data) =>
+      data.id === id ? { ...data, archived: true } : data
+    );
+    setInitialData(isData);
+    setFilteredData(isData);
+  };
 
   return (
     <div className="flex flex-col gap-6">
       <ActivedNotes
-        initialData={activedData}
+        initialData={
+          initialData.filter((data) => !data.archived) &&
+          filteredData.filter((data) => !data.archived)
+        }
         formaterDate={showFormattedDate}
         onDelete={onDeleteHandler}
         addNote={onAddNoteHandler}
         onSearchNote={onSearchNoteHandler}
+        onArchived={onArchivedNoteHandler}
       />
       <ArchivedNotes
-        initialData={archivedInitData}
+        initialData={initialData.filter((data) => data.archived)}
         formaterDate={showFormattedDate}
         onDelete={onDeleteHandler}
       />
